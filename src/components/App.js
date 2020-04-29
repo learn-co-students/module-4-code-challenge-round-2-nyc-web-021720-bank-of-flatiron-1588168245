@@ -13,11 +13,14 @@ class App extends Component {
     sort: null
   }
 
-  //gets the transactions
-  componentDidMount() {
+  getData = () => {
     fetch("http://localhost:6001/transactions")
       .then(resp => resp.json())
       .then(data => this.setState({ transactions: data }))
+  }
+  //gets the transactions
+  componentDidMount() {
+    this.getData()
   }
 
   handleChange = e => {
@@ -50,19 +53,13 @@ class App extends Component {
   deleteClick = e => {
     let trans = e.target.parentNode
     let childeren = e.target.parentNode.childNodes
-    console.log(e.target.parentNode.id)
-    // fetch(`http://localhost:6001/transactions/${}`, {
-    //   method: "POST",
-    //   headers: { "content-type": "application/json", "accept": "application/json" },
-    //   body: JSON.stringify({
-    //     "date": this.state.date[0],
-    //     "description": this.state.description[0],
-    //     "category": this.state.category[0],
-    //     "amount": this.state.amount[0]
-    //   })
-    // })
-    //   .then(resp => resp.json())
-    //   .then(data => this.setState({ transactions: [...this.state.transactions, data] }))
+    // console.log(e.target.parentNode.id)
+    fetch(`http://localhost:6001/transactions/${trans.id}`, {
+      method: "DELETE",
+      headers: { "content-type": "application/json", "accept": "application/json" },
+    })
+      .then(resp => resp.json())
+      .then(this.getData())
 
   }
 

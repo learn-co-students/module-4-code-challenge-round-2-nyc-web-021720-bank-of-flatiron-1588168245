@@ -76,35 +76,6 @@
       "description": "MTA Vending Machine: MetroCard",
       "category": "Transportation",
       "amount": -116.39
-    },
-    {
-      "id": 12,
-      "date": "2019-12-17",
-      "description": "Venmo, Pay Roommate for Rent",
-      "category": "Housing",
-      "amount": -975
-    },
-    {
-      "date": [
-        "2018-11-30"
-      ],
-      "description": [
-        "Chess Board"
-      ],
-      "category": [
-        "Game"
-      ],
-      "amount": [
-        "35.00"
-      ],
-      "id": 13
-    },
-    {
-      "date": "2015-03-30",
-      "description": "Animal Crossing",
-      "category": "Distraction",
-      "amount": "100000000",
-      "id": 14
     }
   ]
 }
