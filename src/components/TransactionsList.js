@@ -3,8 +3,9 @@ import Transaction from "./Transaction";
 
 const TransactionsList = (props) => {
 
+
   const renderTransactions = () => {
-    return props.transactions.map(transaction => {
+    return props.searchedTransactions.map(transaction => {
       return <Transaction date={transaction.date} description={transaction.description} category={transaction.category} amount={transaction.amount} key={transaction.id} />
     })
   }

@@ -68,7 +68,9 @@ class AccountContainer extends Component {
   }
 
   handleSearch = (e) => {
-    console.log(e.target.value)
+    this.setState({
+      search: e.target.value
+    })
   }
   
 
@@ -78,11 +80,13 @@ class AccountContainer extends Component {
     let description = this.state.description
     let category = this.state.category
     let amount = this.state.amount
+    let searchedTransactions = [...this.state.transactions].filter(transaction => transaction.description.includes(this.state.search))
+    
     return (
       <div>
         <Search handleSearch={this.handleSearch}/>
         <AddTransactionForm amount={amount} category={category} description={description} date={date} handleSubmit={this.handleSubmit} handleAmount={this.handleAmount} handleCategory={this.handleCategory} handleDescription={this.handleDescription} handleDate={this.handleDate} />
-        <TransactionsList transactions={transactions}/>
+        <TransactionsList searchedTransactions={searchedTransactions} transactions={transactions}/>
       </div>
     );
   }
