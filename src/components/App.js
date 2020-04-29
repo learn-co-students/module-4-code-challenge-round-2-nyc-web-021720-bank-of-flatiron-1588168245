@@ -9,6 +9,7 @@ class App extends Component {
 		category: "",
 		description: "",
 		date: "",
+		search: "",
 	};
 
 	componentDidMount() {
@@ -21,29 +22,43 @@ class App extends Component {
 			});
 	}
 
+	handleSearch = (e) => {
+		this.setState({
+			search: e.target.value,
+		});
+	};
+
 	handleChange = (e) => {
 		this.setState({
 			[e.target.name]: e.target.value,
 		});
 	};
 
-	handleSubmit = (obj) => {
+	handleSubmit = (e) => {
+		e.preventDefault();
+		let newTransaction = {
+			date: this.state.date,
+			category: this.state.category,
+			amount: this.state.amount,
+			description: this.state.description,
+		};
 		fetch("http://localhost:6001/transactions", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 				Accept: "application/json",
 			},
-			body: JSON.stringify({
-				amount: obj.amount,
-				date: obj.date,
-				category: obj.category,
-				description: obj.description,
-			}),
+			body: JSON.stringify(newTransaction),
 		})
 			.then((response) => response.json())
 			.then((data) => {
-				this.setState({ transactions: data });
+				this.setState({
+					transactions: [...this.state.transactions, data],
+					amount: "",
+					date: "",
+					description: "",
+					category: "",
+				});
 			});
 	};
 	render() {
@@ -60,6 +75,7 @@ class App extends Component {
 					description={this.state.description}
 					handleChange={this.handleChange}
 					handleSubmit={this.handleSubmit}
+					handleSearch={this.handleSearch}
 				/>
 			</div>
 		);

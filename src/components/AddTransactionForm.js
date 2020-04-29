@@ -5,7 +5,7 @@ class AddTransactionForm extends Component {
 		console.log(this.props);
 		return (
 			<div className="ui segment">
-				<form className="ui form">
+				<form onSubmit={this.props.handleSubmit} className="ui form">
 					<div className="inline fields">
 						<input
 							onChange={this.props.handleChange}
@@ -36,11 +36,7 @@ class AddTransactionForm extends Component {
 							value={this.props.amount}
 						/>
 					</div>
-					<button
-						onClick={(e) => this.props.handleSubmit(e.target.value)}
-						className="ui button"
-						type="submit"
-					>
+					<button className="ui button" type="submit">
 						Add Transaction
 					</button>
 				</form>
