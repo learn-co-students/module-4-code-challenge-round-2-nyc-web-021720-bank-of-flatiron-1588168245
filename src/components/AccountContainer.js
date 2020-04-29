@@ -19,7 +19,6 @@ class AccountContainer extends Component {
 
     componentDidMount() {
       fetch(URL)
-      console.log(URL)
       .then(response => response.json())
       .then(results => this.setState({
         dataInfo: results,
@@ -27,15 +26,27 @@ class AccountContainer extends Component {
       }))
     }
 
+    handleChange = (event) => {
+      const {dataInfo, searchForm} = this.state
+      this.setsearchForm(event)
 
-  render() {
+      const searchResults = dataInfo.filter(transaction => transaction.category.toLowerCase().includes(searchForm)) || transaction.description.toLowerCase().includes(searchForm)
+      this.setState({transactions: searchResults})
+    }
+  
+    setsearchForm = (event) => {
+      this.setState({searchForm: event.target.value.toLowerCase()})
+    }
+  
+      render() {
     return (
       <div>
         <Search />
         <AddTransactionForm />
-        <TransactionsList />
+        <Search handleChange={this.handleChange}/>
+        <TransactionsList transactions={this.state.transactions}/>
       </div>
-    );
+    )
   }
 }
 
