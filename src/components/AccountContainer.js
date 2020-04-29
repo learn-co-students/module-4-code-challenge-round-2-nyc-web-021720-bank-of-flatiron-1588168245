@@ -50,7 +50,13 @@ class AccountContainer extends Component {
     newTransaction.description = this.state.description
     newTransaction.category = this.state.category
     newTransaction.amount = parseInt(this.state.amount, 10)
-    console.log(newTransaction)
+    fetch('http://localhost:6001/transactions', {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newTransaction)
+    })
   }
   
 
@@ -60,7 +66,7 @@ class AccountContainer extends Component {
     return (
       <div>
         <Search />
-        <AddTransactionForm handleAmount={this.handleAmount} handleCategory={this.handleCategory} handleDescription={this.handleDescription} handleDate={this.handleDate} />
+        <AddTransactionForm handleSubmit={this.handleSubmit} handleAmount={this.handleAmount} handleCategory={this.handleCategory} handleDescription={this.handleDescription} handleDate={this.handleDate} />
         <TransactionsList transactions={transactions}/>
       </div>
     );

@@ -4,7 +4,7 @@ class AddTransactionForm extends Component {
   render() {
     return (
       <div className="ui segment">
-        <form className="ui form">
+        <form className="ui form" onSubmit={this.props.handleSubmit}>
           <div className="inline fields">
             <input type="date" name="date" onChange={this.props.handleDate}/>
             <input type="text" name="description" placeholder="Description" onChange={this.props.handleDescription} />
