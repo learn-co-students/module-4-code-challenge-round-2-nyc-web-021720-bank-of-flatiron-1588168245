@@ -13,12 +13,10 @@ class AddTransactionForm extends Component {
     this.setState({[event.target.name]: event.target.value})
   }
 
-  addNewTransaction = event => {
-    event.preventDefault()
-    
-  }
+
 
   render() {
+    console.log(this.state.date.value)
     return (
       <div className="ui segment">
         <form className="ui form">
