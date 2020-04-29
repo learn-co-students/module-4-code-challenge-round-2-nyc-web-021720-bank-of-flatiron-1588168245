@@ -21,9 +21,31 @@ class App extends Component {
 			});
 	}
 
-	handleChange = (e) => {};
+	handleChange = (e) => {
+		this.setState({
+			[e.target.name]: e.target.value,
+		});
+	};
 
-	handleForm = () => {};
+	handleSubmit = (obj) => {
+		fetch("http://localhost:6001/transactions", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				Accept: "application/json",
+			},
+			body: JSON.stringify({
+				amount: obj.amount,
+				date: obj.date,
+				category: obj.category,
+				description: obj.description,
+			}),
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				this.setState({ transactions: data });
+			});
+	};
 	render() {
 		return (
 			<div className="ui raised segment">
@@ -37,7 +59,7 @@ class App extends Component {
 					category={this.state.category}
 					description={this.state.description}
 					handleChange={this.handleChange}
-					handleForm={this.handleForm}
+					handleSubmit={this.handleSubmit}
 				/>
 			</div>
 		);

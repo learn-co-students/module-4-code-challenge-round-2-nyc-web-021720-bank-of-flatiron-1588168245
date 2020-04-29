@@ -2,36 +2,45 @@ import React, { Component } from "react";
 
 class AddTransactionForm extends Component {
 	render() {
+		console.log(this.props);
 		return (
 			<div className="ui segment">
-				<form onSubmit={this.props.handleForm} className="ui form">
+				<form className="ui form">
 					<div className="inline fields">
 						<input
+							onChange={this.props.handleChange}
 							type="date"
 							name="date"
-							value={this.props.transactions.date}
+							value={this.props.date}
 						/>
 						<input
+							onChange={this.props.handleChange}
 							type="text"
 							name="description"
 							placeholder="Description"
-							value={this.props.transactions.description}
+							value={this.props.description}
 						/>
 						<input
+							onChange={this.props.handleChange}
 							type="text"
 							name="category"
 							placeholder="Category"
-							value={this.props.transactions.category}
+							value={this.props.category}
 						/>
 						<input
+							onChange={this.props.handleChange}
 							type="number"
 							name="amount"
 							placeholder="Amount"
 							step="0.01"
-							value={this.props.transactions.amount}
+							value={this.props.amount}
 						/>
 					</div>
-					<button className="ui button" type="submit">
+					<button
+						onClick={(e) => this.props.handleSubmit(e.target.value)}
+						className="ui button"
+						type="submit"
+					>
 						Add Transaction
 					</button>
 				</form>

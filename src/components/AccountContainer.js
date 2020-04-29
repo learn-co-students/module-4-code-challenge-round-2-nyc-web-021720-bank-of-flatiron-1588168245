@@ -10,7 +10,12 @@ class AccountContainer extends Component {
 				<Search />
 				<AddTransactionForm
 					transactions={this.props.transactions}
-					handleForm={this.props.handleForm}
+					handleSubmit={this.props.handleSubmit}
+					handleChange={this.props.handleChange}
+					date={this.props.date}
+					amount={this.props.amount}
+					category={this.props.category}
+					description={this.props.description}
 				/>
 				<TransactionsList transactions={this.props.transactions} />
 			</div>
