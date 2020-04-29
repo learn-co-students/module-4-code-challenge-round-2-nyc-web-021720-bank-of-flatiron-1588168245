@@ -18,25 +18,30 @@ class AccountContainer extends Component {
 
   handleSearch = event => {
     this.setState({ searchTerm: event.target.value})
+    console.log(event.target.value)
+  }
+
+  addNewTransaction = newTransaction => {
+    this.setState({ transactions: [...this.state.transactions, newTransaction]})
   }
 
 
-  searchFilter = () => {
+  // searchFilter = () => {
+  // }
+  
+  render() {
     let allTransactions = this.state.transactions 
     if (this.state.searchTerm !== "") {
-      allTransactions = allTransactions.filter(transaction => transaction.description.toLowerCase().includes(this.state.description.toLowerCase()))
+      allTransactions = allTransactions.filter(transaction => transaction.description.toLowerCase().includes(this.state.searchTerm.toLowerCase()))
     } 
-    return allTransactions
-  }
-
-  render() {
-
+   
+    
     // console.log(allTransactions)
     return (
       <div>
-        <Search searchTerm={this.searchFilter} />
+        <Search handleSearch={this.handleSearch} />
         <AddTransactionForm />
-        <TransactionsList transactions={this.state.transactions}/>
+        <TransactionsList transactions={allTransactions} />
       </div>
     );
   }
