@@ -10,7 +10,7 @@ class AccountContainer extends Component {
 
     this.state = {
       transactions: [],
-      search: ''
+      search: '',
     }
   }
 
@@ -53,12 +53,16 @@ class AccountContainer extends Component {
     })
   }
 
+  handleSort = (event) => {
+    console.log(event.target.value)
+  }
+
   render() {
     let displayedTransactions = this.state.transactions.filter(s => 
       s.description.toLowerCase().includes(this.state.search))
     return (
       <div>
-        <Search handleSearch={this.handleSearch}/>
+        <Search handleSearch={this.handleSearch} handleSort={this.handleSort}/>
         <AddTransactionForm handleSubmit={this.handleSubmit}/>
         <TransactionsList transactions={displayedTransactions}/>
       </div>
