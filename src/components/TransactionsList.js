@@ -3,7 +3,7 @@ import Transaction from "./Transaction";
 
 const TransactionsList = (props) => {
   
-  let showTransactions= props.transactions.map(transaction=> <Transaction key={transaction.id} transaction={transaction}/>)
+  let showTransactions= props.transactions.map(transaction=> <Transaction key={transaction.id} onDelete={props.onDelete}transaction={transaction}/>)
   return (
     
     <table className="ui celled striped padded table">

@@ -32,6 +32,18 @@ class AccountContainer extends Component {
     .then(res=>res.json())
     .then(data=>this.setState({transactions:[...this.state.transactions,data]}))
   }
+  onDelete=(e,id)=>{
+    e.preventDefault()
+    fetch(`http://localhost:6001/transactions/${id}`,{
+      method:"DELETE",
+      headers:{
+        'content-type':'application/json',
+        Accept:'application/json'
+      }
+    })
+    .then(res=>res.json())
+    .then(data=>this.setState({transactions:[...this.state.transactions].filter(transaction=>transaction.id!=id)}))
+  }
   handleSearch= e =>{
     this.setState({searchWord:e.target.value})
   }
@@ -55,7 +67,7 @@ class AccountContainer extends Component {
       <div>
         <Search handleSearch={this.handleSearch} searchWord={this.state.searchWord}/>
         <AddTransactionForm onSubmit={this.onSubmit}/>
-        <TransactionsList handleCat={this.handleCat} handleDesc={this.handleDesc} transactions={displayTransactions} />
+        <TransactionsList handleCat={this.handleCat} handleDesc={this.handleDesc} onDelete={this.onDelete} transactions={displayTransactions} />
       </div>
     );
   }
