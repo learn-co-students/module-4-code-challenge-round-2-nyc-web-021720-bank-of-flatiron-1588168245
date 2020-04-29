@@ -8,7 +8,9 @@ class AccountContainer extends Component {
   state = {
     transactions: [],
     date: '',
-    description: ''
+    description: '',
+    category: '',
+    amount: ''
 
   }
 
@@ -30,19 +32,26 @@ class AccountContainer extends Component {
       description: e.target.value
     })
   }
-  handleDescription = (e) => {
+  handleCategory = (e) => {
     this.setState({
-      description: e.target.value
+      category: e.target.value
+    })
+  }
+  handleAmount = (e) => {
+    this.setState({
+      amount: e.target.value
     })
   }
 
+  
+
   render() {
     let transactions = this.state.transactions
-    console.log(this.state.description)
+    console.log(this.state.amount)
     return (
       <div>
         <Search />
-        <AddTransactionForm handleDescription={this.handleDescription} handleDate={this.handleDate} />
+        <AddTransactionForm handleAmount={this.handleAmount} handleCategory={this.handleCategory} handleDescription={this.handleDescription} handleDate={this.handleDate} />
         <TransactionsList transactions={transactions}/>
       </div>
     );
