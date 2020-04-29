@@ -16,7 +16,10 @@ class AccountContainer extends Component {
     .then(data => this.setState({ transactions: data}))
   }
 
-  
+  handleSearch = event => {
+    this.setState({ searchTerm: event.target.value})
+  }
+
 
   searchFilter = () => {
     let allTransactions = this.state.transactions 
@@ -28,10 +31,10 @@ class AccountContainer extends Component {
 
   render() {
 
-    console.log(allTransactions)
+    // console.log(allTransactions)
     return (
       <div>
-        <Search />
+        <Search searchTerm={this.searchFilter} />
         <AddTransactionForm />
         <TransactionsList transactions={this.state.transactions}/>
       </div>
