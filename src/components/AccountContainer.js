@@ -25,7 +25,11 @@ class AccountContainer extends Component {
   }
 
   filteredTransactions = ()=>{
-      this.setState({transactions: this.state.transactions.filter(transaction=> transaction.description === this.state.searchTransaction)})
+      this.setState({transactions: this.state.transactions.filter(transaction=> transaction.description === this.state.searchTransaction), searchTransaction: ''})
+  }
+
+  sortTransactions = ()=>{
+    
   }
 
   render() {

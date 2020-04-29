@@ -9,7 +9,7 @@ class AddTransactionForm extends Component {
   }
 
   handleChange = (event)=>{
-    console.log(event.target.name, event.target.value)
+    // console.log(event.target.name, event.target.value)
     this.setState({ [event.target.name]: event.target.value})
   }
 
