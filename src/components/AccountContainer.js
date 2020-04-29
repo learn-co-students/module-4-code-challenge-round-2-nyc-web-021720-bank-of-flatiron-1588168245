@@ -9,7 +9,8 @@ class AccountContainer extends Component {
     super()
 
     this.state = {
-      transactions: []
+      transactions: [],
+      search: ''
     }
   }
 
@@ -19,7 +20,7 @@ class AccountContainer extends Component {
     .then(r => r.json())
     .then(transactions => 
       this.setState ({
-        transactions: transactions
+        transactions: transactions,
     })
     )
   }
@@ -41,17 +42,25 @@ class AccountContainer extends Component {
     .then(r => r.json())
     .then(response => 
       this.setState({
-        transactions: [...this.state.transactions, response]
+        transactions: [...this.state.transactions, response],
       })
     )
   }
 
+  handleSearch = (event) => {
+    this.setState({
+      search: event.target.value
+    })
+  }
+
   render() {
+    let displayedTransactions = this.state.transactions.filter(s => 
+      s.description.toLowerCase().includes(this.state.search))
     return (
       <div>
-        <Search />
+        <Search handleSearch={this.handleSearch}/>
         <AddTransactionForm handleSubmit={this.handleSubmit}/>
-        <TransactionsList transactions={this.state.transactions}/>
+        <TransactionsList transactions={displayedTransactions}/>
       </div>
     );
   }

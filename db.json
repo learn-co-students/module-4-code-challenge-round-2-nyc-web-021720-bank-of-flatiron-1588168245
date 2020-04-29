@@ -139,6 +139,13 @@
       "category": "adoinoin",
       "amount": "40",
       "id": 20
+    },
+    {
+      "date": "2020-04-11",
+      "description": "sd",
+      "category": "adfg",
+      "amount": "60",
+      "id": 21
     }
   ]
 }
