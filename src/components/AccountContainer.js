@@ -13,8 +13,23 @@ class AccountContainer extends Component {
 handleSearch=(e)=>{
   this.setState({
     search: e.target.value
+  },()=>console.log(this.state.search))
+}
+
+addTransaction=(transaction)=>{
+this.setState({
+  transactions:[...this.state.transactions, transaction]
+})
+}
+
+handleChange=(e)=>{
+  this.setState({
+    [e.target.name]: e.target.value
   })
 }
+
+
+
 
 
 
@@ -26,11 +41,13 @@ handleSearch=(e)=>{
     }))
   }
   render() {
-    console.log(this.state)
+    // console.log(this.state)
+const{date, description, category, amount}=this.state
     return (
       <div>
-        <Search handleSearch={this.handleSearch}/>
-        <AddTransactionForm />
+        <Search handleSearch={this.handleSearch} search={this.state.search}/>
+        <AddTransactionForm  handleChange={this.handleChange} 
+        date={date} description={description} category={category} amount={amount} />
         <TransactionsList display={this.state.transactions} />
       </div>
     );
