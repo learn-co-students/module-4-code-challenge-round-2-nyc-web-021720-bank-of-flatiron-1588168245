@@ -97,6 +97,13 @@
       "category": "Beverage",
       "amount": "100",
       "id": 14
+    },
+    {
+      "date": "2020-04-30",
+      "description": "Shake Shack",
+      "category": "Food",
+      "amount": "15",
+      "id": 15
     }
   ]
 }

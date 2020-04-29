@@ -24,6 +24,25 @@ class AccountContainer extends Component {
     this.setState({searchTransaction: event.target.value})
   }
 
+  // stretch
+
+  handleSort = (sortBy) => {
+    let arr = []
+    switch(sortBy){
+      case "Category":
+        arr = this.state.transactions.sort((a,b) => a.category > b.category ? 1 : -1)
+        break;
+      case "Description":
+        arr = this.state.transactions.sort((a,b) => a.description > b.description ? 1 : -1)
+        break;
+      default:
+        console.log('No Transactions')
+    }
+    this.setState({
+      transactions: arr
+    })
+  }
+
 
 
   render() {
@@ -34,6 +53,7 @@ class AccountContainer extends Component {
         <Search 
         handleSearch={this.handleSearchTransaction}
         searchTransaction={this.state.searchTransaction}
+        handleSort={this.handleSort}
         />
         <AddTransactionForm addTransaction={this.addTransaction} />
         <TransactionsList transactions={searchedTransaction}/>
