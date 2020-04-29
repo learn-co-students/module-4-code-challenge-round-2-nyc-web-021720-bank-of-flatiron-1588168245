@@ -16,22 +16,37 @@ handleSearch=(e)=>{
   },()=>console.log(this.state.search))
 }
 
-addTransaction=(transaction)=>{
-this.setState({
-  transactions:[...this.state.transactions, transaction]
-})
-}
 
 handleChange=(e)=>{
   this.setState({
     [e.target.name]: e.target.value
-  })
+  } )
 }
 
+handleSubmit=(e)=>{
+  e.preventDefault()
+// console.log(e.target.value)
+  fetch('http://localhost:6001/transactions',{
+    method: "POST",
+    headers: {
+      "content-type":"application/json",
+      accept:"application/json"
+    },
+    body: JSON.stringify(
+      {
+        date:e.target.date.value,
+        desciprtion:e.target.desciprtion.value,
+        category:e.target.category.value,
+        amount: e.target.amount.value
+      }
+    )
+  })
+  .then(resp => resp.json())
+  .then(newTran=> this.setState({
+    transactions: [...this.state.transactions,newTran]
+  }))
 
-
-
-
+}
 
   componentDidMount(){
     fetch('http://localhost:6001/transactions')
@@ -42,12 +57,15 @@ handleChange=(e)=>{
   }
   render() {
     // console.log(this.state)
-const{date, description, category, amount}=this.state
+const {date, description, category, amount}=this.state
     return (
       <div>
         <Search handleSearch={this.handleSearch} search={this.state.search}/>
-        <AddTransactionForm  handleChange={this.handleChange} 
-        date={date} description={description} category={category} amount={amount} />
+        <AddTransactionForm  
+        handleSubmit={this.handleSubmit}
+        handleChange={this.handleChange} 
+        date={date} description={description} 
+        category={category} amount={amount} />
         <TransactionsList display={this.state.transactions} />
       </div>
     );

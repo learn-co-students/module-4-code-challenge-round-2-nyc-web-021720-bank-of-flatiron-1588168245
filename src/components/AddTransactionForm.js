@@ -2,10 +2,10 @@ import React, { Component } from "react";
 
 class AddTransactionForm extends Component {
   render() {
-    const {handleChange,date,description,category,amount}=this.props
+    const {handleChange,handleSubmit,date,description,category,amount}=this.props
     return (
       <div className="ui segment">
-        <form className="ui form" onSubmit={null}>
+        <form className="ui form" onSubmit={handleSubmit}>
           <div className="inline fields">
             <input type="date" name="date" value={date} onChange={handleChange} />
             <input type="text" name="description" value={description} onChange={handleChange} placeholder="Description" />
