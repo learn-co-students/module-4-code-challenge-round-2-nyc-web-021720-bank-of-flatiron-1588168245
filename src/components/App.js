@@ -5,6 +5,10 @@ import "../stylesheets/App.css";
 class App extends Component {
 	state = {
 		transactions: [],
+		amount: "",
+		category: "",
+		description: "",
+		date: "",
 	};
 
 	componentDidMount() {
@@ -16,13 +20,25 @@ class App extends Component {
 				});
 			});
 	}
+
+	handleChange = (e) => {};
+
+	handleForm = () => {};
 	render() {
 		return (
 			<div className="ui raised segment">
 				<div className="ui segment violet inverted">
 					<h2>The Royal Bank of Flatiron</h2>
 				</div>
-				<AccountContainer transactions={this.state.transactions} />
+				<AccountContainer
+					transactions={this.state.transactions}
+					amount={this.state.amount}
+					date={this.state.date}
+					category={this.state.category}
+					description={this.state.description}
+					handleChange={this.handleChange}
+					handleForm={this.handleForm}
+				/>
 			</div>
 		);
 	}
