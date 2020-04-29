@@ -8,7 +8,8 @@ class App extends Component {
     search: null,
     date: null,
     description: null,
-    category: null
+    category: null,
+    amount: 0
   }
 
   //gets the transactions
@@ -18,9 +19,28 @@ class App extends Component {
       .then(data => this.setState({ transactions: data }))
   }
 
-  // handleChange = e => {
-  //   console.log(e.target)
-  // }
+  handleChange = e => {
+    this.setState({ [e.target.name]: [e.target.value] })
+    console.log(this.state)
+  }
+
+  handleSubmit = e => {
+    e.preventDefault()
+    console.log(this.state)
+
+    fetch("http://localhost:6001/transactions", {
+      method: "POST",
+      headers: { "content-type": "application/json", "accept": "application/json" },
+      body: JSON.stringify({
+        "date": this.state.date,
+        "description": this.state.description,
+        "category": this.state.category,
+        "amount": this.state.amount
+      })
+    })
+      .then(resp => resp.json())
+      .then(data => this.setState({ transactions: [...this.state.transactions, data] }))
+  }
 
   render() {
 
@@ -29,7 +49,7 @@ class App extends Component {
         <div className="ui segment violet inverted">
           <h2>The Royal Bank of Flatiron</h2>
         </div>
-        <AccountContainer transactions={this.state.transactions} />
+        <AccountContainer handleSubmit={this.handleSubmit} handleChange={this.handleChange} transactions={this.state.transactions} />
       </div>
     );
   }

@@ -4,7 +4,6 @@ import Transaction from "./Transaction";
 class TransactionsList extends React.Component {
 
   render() {
-    console.log(this.props)
     return (
       <table className="ui celled striped padded table">
         <tbody>
