@@ -111,6 +111,13 @@
       "description": "asdf",
       "category": "asdf",
       "amount": 1
+    },
+    {
+      "id": 17,
+      "date": "2020-04-30",
+      "description": "descriptionsnnnnss",
+      "category": "testcategory",
+      "amount": 0
     }
   ]
 }

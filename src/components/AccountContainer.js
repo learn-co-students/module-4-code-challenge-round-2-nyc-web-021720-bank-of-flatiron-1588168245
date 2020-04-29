@@ -80,7 +80,7 @@ class AccountContainer extends Component {
     let description = this.state.description
     let category = this.state.category
     let amount = this.state.amount
-    let searchedTransactions = [...this.state.transactions].filter(transaction => transaction.description.includes(this.state.search))
+    let searchedTransactions = [...this.state.transactions].filter(transaction => transaction.description.toLowerCase().includes(this.state.search.toLowerCase()))
     
     return (
       <div>
