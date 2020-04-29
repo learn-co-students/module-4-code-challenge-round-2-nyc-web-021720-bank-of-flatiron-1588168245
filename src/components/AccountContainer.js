@@ -11,7 +11,6 @@ class AccountContainer extends Component {
     description: '',
     category: '',
     amount: ''
-
   }
 
   componentDidMount = () => {
@@ -43,6 +42,16 @@ class AccountContainer extends Component {
     })
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault()
+    let newTransaction = {}
+    newTransaction.id = this.state.transactions.length + 1
+    newTransaction.date = this.state.date
+    newTransaction.description = this.state.description
+    newTransaction.category = this.state.category
+    newTransaction.amount = parseInt(this.state.amount, 10)
+    console.log(newTransaction)
+  }
   
 
   render() {
