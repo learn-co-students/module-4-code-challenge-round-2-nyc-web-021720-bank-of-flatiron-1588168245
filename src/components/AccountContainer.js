@@ -5,7 +5,8 @@ import AddTransactionForm from "./AddTransactionForm";
 
 class AccountContainer extends Component {
   state={
-    transactions:[]
+    transactions:[],
+    searchWord:""
   }
   componentDidMount(){
     fetch("http://localhost:6001/transactions")
@@ -13,7 +14,7 @@ class AccountContainer extends Component {
     .then(data=>this.setState({transactions:data}))
   }
   onSubmit=(e)=>{
-    e.prevent.default()
+    e.preventDefault()
     fetch("http://localhost:6001/transactions",{
       method:"POST",
       headers:{
@@ -29,13 +30,16 @@ class AccountContainer extends Component {
     .then(res=>res.json())
     .then(data=>this.setState({transactions:[...this.state.transactions,data]}))
   }
+  handleSearch= e =>{
+    this.setState({searchWord:e.target.value})
+  }
   render() {
-    
+    let displayTransactions = this.state.searchWord==="" ? this.state.transactions: this.state.transactions.filter(transaction=>transaction.description===this.state.searchWord)
     return (
       <div>
-        <Search />
+        <Search handleSearch={this.handleSearch} searchWord={this.state.searchWord}/>
         <AddTransactionForm onSubmit={this.onSubmit}/>
-        <TransactionsList transactions={this.state.transactions} />
+        <TransactionsList transactions={displayTransactions} />
       </div>
     );
   }

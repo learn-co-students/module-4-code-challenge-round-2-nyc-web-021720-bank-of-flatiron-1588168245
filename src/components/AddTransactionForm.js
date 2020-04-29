@@ -15,7 +15,7 @@ class AddTransactionForm extends Component {
     const{date,description,category,amount}=this.state
     return (
       <div className="ui segment">
-        <form className="ui form" onSubmit={this.props.onSubmit}>
+        <form className="ui form" onSubmit={e=>this.props.onSubmit(e)}>
           <div className="inline fields">
             <input type="date" onChange={this.onChange} name="date" value={date} />
             <input type="text" onChange={this.onChange} name="description" value={description} placeholder="Description" />
