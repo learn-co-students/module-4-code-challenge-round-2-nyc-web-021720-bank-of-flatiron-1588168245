@@ -7,7 +7,7 @@ class AddTransactionForm extends Component {
         <form className="ui form">
           <div className="inline fields">
             <input type="date" name="date" onChange={this.props.handleDate}/>
-            <input type="text" name="description" placeholder="Description" />
+            <input type="text" name="description" placeholder="Description" onChange={this.props.handleDescription} />
             <input type="text" name="category" placeholder="Category" />
             <input
               type="number"

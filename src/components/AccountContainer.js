@@ -8,7 +8,7 @@ class AccountContainer extends Component {
   state = {
     transactions: [],
     date: '',
-    
+    description: ''
 
   }
 
@@ -25,14 +25,24 @@ class AccountContainer extends Component {
       date: e.target.value
     })
   }
+  handleDescription = (e) => {
+    this.setState({
+      description: e.target.value
+    })
+  }
+  handleDescription = (e) => {
+    this.setState({
+      description: e.target.value
+    })
+  }
 
   render() {
     let transactions = this.state.transactions
-    
+    console.log(this.state.description)
     return (
       <div>
         <Search />
-        <AddTransactionForm handleDate={this.handleDate} />
+        <AddTransactionForm handleDescription={this.handleDescription} handleDate={this.handleDate} />
         <TransactionsList transactions={transactions}/>
       </div>
     );
