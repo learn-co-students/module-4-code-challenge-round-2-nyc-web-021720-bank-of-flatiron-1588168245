@@ -16,3 +16,4 @@ const Search = () => {
 };
 
 export default Search;
+// let display = this.state.searchName !== "" ? [...this.state.pokemons].filter(pokemon => pokemon.name === this.state.searchName) : [...this.state.pokemons]
