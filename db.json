@@ -83,6 +83,20 @@
       "description": "Venmo, Pay Roommate for Rent",
       "category": "Housing",
       "amount": -975
+    },
+    {
+      "date": "2020-04-29",
+      "description": "Pad Thai",
+      "category": "Food",
+      "amount": "30",
+      "id": 13
+    },
+    {
+      "date": "2020-04-29",
+      "description": "Beer",
+      "category": "Beverage",
+      "amount": "100",
+      "id": 14
     }
   ]
 }
