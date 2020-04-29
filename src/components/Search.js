@@ -9,7 +9,7 @@ const Search = (props) => {
         value={props.searchTransaction}
         onChange={ props.handleSearchChange}
       />
-      <i className="circular search link icon"></i>
+      <i className="circular search link icon" onClick={props.filteredTransactions}></i>
     </div>
   );
 };
