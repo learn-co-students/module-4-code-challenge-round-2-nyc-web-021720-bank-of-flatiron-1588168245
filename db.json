@@ -83,6 +83,41 @@
       "description": "Venmo, Pay Roommate for Rent",
       "category": "Housing",
       "amount": -975
+    },
+    {
+      "date": "2020-04-01",
+      "description": "new",
+      "category": "new",
+      "amount": "100",
+      "id": 13
+    },
+    {
+      "date": "2020-04-01",
+      "description": "dd",
+      "category": "nothing",
+      "amount": "20",
+      "id": 14
+    },
+    {
+      "date": "2020-04-01",
+      "description": "sss",
+      "category": "sss",
+      "amount": "22",
+      "id": 15
+    },
+    {
+      "date": "2020-04-01",
+      "description": "sss",
+      "category": "sss",
+      "amount": "22",
+      "id": 16
+    },
+    {
+      "date": "2020-04-01",
+      "description": "boy",
+      "category": "nothing",
+      "amount": 0,
+      "id": 17
     }
   ]
 }
