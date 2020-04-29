@@ -28,16 +28,18 @@ class App extends Component {
   .then(newTransaction => this.setState({tansactions: [...this.state.transactions, newTransaction]}))
   }
 
-  handleFormChange = (e) => {this.setState({newTransaction:})}
+  handleFormChange = (e) => {
+    console.log(this.state.newTransaction)
+    this.setState({newTransaction: {...this.state.newTransaction, [e.target.name]: e.target.value}})}
 
   render() {
-    
+    console.log(this.state.newTransaction)
     return (
       <div className="ui raised segment">
         <div className="ui segment violet inverted">
           <h2>The Royal Bank of Flatiron</h2>
         </div>
-        <AccountContainer transactions={this.state.transactions} handlePost={this.handlePost}/>
+        <AccountContainer transactions={this.state.transactions} handlePost={this.handlePost} handleFormChange={this.handleFormChange}/>
       </div>
     );
   }
