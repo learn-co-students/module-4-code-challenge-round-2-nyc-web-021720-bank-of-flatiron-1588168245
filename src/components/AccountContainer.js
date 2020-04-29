@@ -7,7 +7,7 @@ class AccountContainer extends Component {
 
   state={
     transactions:[],
-    search: ""
+    search:""
   }
 
 handleSearch=(e)=>{
@@ -20,12 +20,11 @@ handleSearch=(e)=>{
 handleChange=(e)=>{
   this.setState({
     [e.target.name]: e.target.value
-  } )
-}
+  })
+} 
 
 handleSubmit=(e)=>{
   e.preventDefault()
-// console.log(e.target.value)
   fetch('http://localhost:6001/transactions',{
     method: "POST",
     headers: {
@@ -35,7 +34,7 @@ handleSubmit=(e)=>{
     body: JSON.stringify(
       {
         date:e.target.date.value,
-        desciprtion:e.target.desciprtion.value,
+        description:e.target.description.value,
         category:e.target.category.value,
         amount: e.target.amount.value
       }
@@ -60,7 +59,7 @@ handleSubmit=(e)=>{
 const {date, description, category, amount}=this.state
     return (
       <div>
-        <Search handleSearch={this.handleSearch} search={this.state.search}/>
+        <Search handleSearch={this.handleSearch} search={description}/>
         <AddTransactionForm  
         handleSubmit={this.handleSubmit}
         handleChange={this.handleChange} 
