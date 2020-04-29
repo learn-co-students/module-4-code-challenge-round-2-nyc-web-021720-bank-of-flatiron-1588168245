@@ -6,7 +6,10 @@ import AddTransactionForm from "./AddTransactionForm";
 class AccountContainer extends Component {
 
   state = {
-    transactions: []
+    transactions: [],
+    date: '',
+    
+
   }
 
   componentDidMount = () => {
@@ -17,12 +20,19 @@ class AccountContainer extends Component {
     })
   }
 
+  handleDate = (e) => {
+    this.setState({
+      date: e.target.value
+    })
+  }
+
   render() {
     let transactions = this.state.transactions
+    
     return (
       <div>
         <Search />
-        <AddTransactionForm />
+        <AddTransactionForm handleDate={this.handleDate} />
         <TransactionsList transactions={transactions}/>
       </div>
     );
