@@ -1,6 +1,23 @@
 import React, { Component } from "react";
 
 class AddTransactionForm extends Component {
+
+  state = {
+    date: "",
+    description: "",
+    category: "",
+    amount: 0
+  }
+
+  handleChange = event => {
+    this.setState({[event.target.name]: event.target.value})
+  }
+
+  addNewTransaction = event => {
+    event.preventDefault()
+    
+  }
+
   render() {
     return (
       <div className="ui segment">
