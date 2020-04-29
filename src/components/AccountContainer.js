@@ -6,7 +6,7 @@ const bankUrl = 'http://localhost:6001/transactions'
 class AccountContainer extends Component {
   state = {
     transactions: [],
-    newTransaction: {}
+    searchTransaction: ''
   }
 
   componentDidMount(){
@@ -18,11 +18,17 @@ class AccountContainer extends Component {
   addTransaction = (newTransaction)=>{
     this.setState({transactions: [...this.state.transactions,newTransaction ]})
   }
+  
+  handleSearchChange = (event)=>{
+    console.log(event.target.value)
+    this.setState({searchTransaction: event.target.value})
+    
+  }
   render() {
-    // console.log(this.state.transactions)
+    console.log(this.state.searchTransaction)
     return (
       <div>
-        <Search />
+        <Search handleSearchChange={this.handleSearchChange} searchTransaction={this.state.searchTransaction}/>
         <AddTransactionForm addTransaction={this.addTransaction}/>
         <TransactionsList transactions={this.state.transactions}/>
       </div>
