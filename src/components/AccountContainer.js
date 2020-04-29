@@ -10,7 +10,8 @@ class AccountContainer extends Component {
     date: '',
     description: '',
     category: '',
-    amount: ''
+    amount: '',
+    search: ''
   }
 
   componentDidMount = () => {
@@ -65,6 +66,10 @@ class AccountContainer extends Component {
       amount: ''
     })
   }
+
+  handleSearch = (e) => {
+    console.log(e.target.value)
+  }
   
 
   render() {
@@ -75,7 +80,7 @@ class AccountContainer extends Component {
     let amount = this.state.amount
     return (
       <div>
-        <Search />
+        <Search handleSearch={this.handleSearch}/>
         <AddTransactionForm amount={amount} category={category} description={description} date={date} handleSubmit={this.handleSubmit} handleAmount={this.handleAmount} handleCategory={this.handleCategory} handleDescription={this.handleDescription} handleDate={this.handleDate} />
         <TransactionsList transactions={transactions}/>
       </div>
