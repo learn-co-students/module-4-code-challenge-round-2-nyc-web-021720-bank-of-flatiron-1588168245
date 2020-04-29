@@ -83,6 +83,62 @@
       "description": "Venmo, Pay Roommate for Rent",
       "category": "Housing",
       "amount": -975
+    },
+    {
+      "date": "2020-04-10",
+      "description": "Zach's Transaction",
+      "category": "blah",
+      "amount": "60",
+      "id": 13
+    },
+    {
+      "date": "2020-04-10",
+      "description": "Zach's Transaction",
+      "category": "blah",
+      "amount": "60",
+      "id": 14
+    },
+    {
+      "date": "2020-04-10",
+      "description": "Zach's Transaction",
+      "category": "blah",
+      "amount": "60",
+      "id": 15
+    },
+    {
+      "date": "2020-04-04",
+      "description": "v",
+      "category": "dg",
+      "amount": "3",
+      "id": 16
+    },
+    {
+      "date": "2020-04-04",
+      "description": "3",
+      "category": "dsfb",
+      "amount": "4",
+      "id": 17
+    },
+    {
+      "date": "2020-04-17",
+      "description": "sdf",
+      "category": "qdg",
+      "amount": "4",
+      "id": 18
+    },
+    {
+      "date": "2020-04-08",
+      "description": "eg",
+      "category": "on",
+      "amount": "2",
+      "id": 19
+    },
+    {
+      "date": "2020-04-02",
+      "description": "sdfsd",
+      "category": "adoinoin",
+      "amount": "40",
+      "id": 20
     }
   ]
 }

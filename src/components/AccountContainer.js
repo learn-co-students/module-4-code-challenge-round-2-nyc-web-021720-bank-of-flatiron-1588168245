@@ -24,11 +24,33 @@ class AccountContainer extends Component {
     )
   }
 
+  handleSubmit = (event, date, description, category, amount) => {
+    event.preventDefault()
+    fetch(`http://localhost:6001/transactions`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        date: date,
+        description: description,
+        category: category,
+        amount: amount
+      })
+    })
+    .then(r => r.json())
+    .then(response => 
+      this.setState({
+        transactions: [...this.state.transactions, response]
+      })
+    )
+  }
+
   render() {
     return (
       <div>
         <Search />
-        <AddTransactionForm />
+        <AddTransactionForm handleSubmit={this.handleSubmit}/>
         <TransactionsList transactions={this.state.transactions}/>
       </div>
     );
