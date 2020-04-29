@@ -5,7 +5,8 @@ import "../stylesheets/App.css";
 class App extends Component {
 
   state = {
-    transactions: []
+    transactions: [],
+    newTransaction: {}
   }
 
   componentDidMount(){
@@ -21,11 +22,13 @@ class App extends Component {
       'Content-Type' : 'application/json',
       Accept: 'application.json'
     },
-    body: JSON.stringify({})
+    body: JSON.stringify({...this.state.newTransaction})
   })
   .then(res => res.json())
-  .then
+  .then(newTransaction => this.setState({tansactions: [...this.state.transactions, newTransaction]}))
   }
+
+  handleFormChange = (e) => {this.setState({newTransaction:})}
 
   render() {
     
@@ -34,7 +37,7 @@ class App extends Component {
         <div className="ui segment violet inverted">
           <h2>The Royal Bank of Flatiron</h2>
         </div>
-        <AccountContainer transactions={this.state.transactions}/>
+        <AccountContainer transactions={this.state.transactions} handlePost={this.handlePost}/>
       </div>
     );
   }
