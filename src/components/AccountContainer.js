@@ -28,8 +28,20 @@ class AccountContainer extends Component {
       this.setState({transactions: this.state.transactions.filter(transaction=> transaction.description === this.state.searchTransaction), searchTransaction: ''})
   }
 
-  sortTransactions = ()=>{
-    
+  sortTransactions = (sortType)=>{
+    let sortedTransactions = []
+    switch(sortType){
+      case "Category":
+        sortedTransactions = this.state.transactions.sort((a, b)=> a.category.localeCompare(b.category))
+        this.setState({transactions: sortedTransactions})
+        break;
+      case "Description":
+        sortedTransactions = this.state.transactions.sort((a, b)=> a.description.localeCompare(b.description))
+        this.setState({transactions: sortedTransactions})
+        break;
+      default: 
+        console.log("Not a choice")
+    }
   }
 
   render() {
@@ -42,7 +54,7 @@ class AccountContainer extends Component {
           filteredTransactions={this.filteredTransactions}
         />
         <AddTransactionForm addTransaction={this.addTransaction}/>
-        <TransactionsList transactions={this.state.transactions}/>
+        <TransactionsList transactions={this.state.transactions} sortTransactions={this.sortTransactions}/>
       </div>
     );
   }
