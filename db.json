@@ -98,6 +98,13 @@
         "35.00"
       ],
       "id": 13
+    },
+    {
+      "date": "2015-03-30",
+      "description": "Animal Crossing",
+      "category": "Distraction",
+      "amount": "100000000",
+      "id": 14
     }
   ]
 }

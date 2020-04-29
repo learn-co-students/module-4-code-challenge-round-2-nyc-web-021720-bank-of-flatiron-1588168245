@@ -32,10 +32,10 @@ class App extends Component {
       method: "POST",
       headers: { "content-type": "application/json", "accept": "application/json" },
       body: JSON.stringify({
-        "date": this.state.date,
-        "description": this.state.description,
-        "category": this.state.category,
-        "amount": this.state.amount
+        "date": this.state.date[0],
+        "description": this.state.description[0],
+        "category": this.state.category[0],
+        "amount": this.state.amount[0]
       })
     })
       .then(resp => resp.json())
