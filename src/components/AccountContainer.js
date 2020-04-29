@@ -44,6 +44,15 @@ class AccountContainer extends Component {
     }
   }
 
+  deleteTransaction = (transactionId)=>{
+    let filter = this.state.transactions.filter(transaction=> transaction.id !== transactionId)
+    fetch(`${bankUrl}/${transactionId}`,{
+      method: 'DELETE'
+    })
+    .then(res=>res.json())
+    .then(data=>this.setState({transactions: filter}))
+  }
+
   render() {
     console.log(this.state.searchTransaction)
     return (
@@ -54,7 +63,11 @@ class AccountContainer extends Component {
           filteredTransactions={this.filteredTransactions}
         />
         <AddTransactionForm addTransaction={this.addTransaction}/>
-        <TransactionsList transactions={this.state.transactions} sortTransactions={this.sortTransactions}/>
+        <TransactionsList 
+          transactions={this.state.transactions} 
+          sortTransactions={this.sortTransactions}
+          deleteTransaction={this.deleteTransaction}
+        />
       </div>
     );
   }
