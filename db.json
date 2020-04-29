@@ -118,6 +118,27 @@
       "description": "descriptionsnnnnss",
       "category": "testcategory",
       "amount": 0
+    },
+    {
+      "id": 18,
+      "date": "2020-04-30",
+      "description": "asdf",
+      "category": "testcategory",
+      "amount": 50
+    },
+    {
+      "id": 19,
+      "date": "2020-04-30",
+      "description": "descriptionsnnnnss",
+      "category": "testcategory",
+      "amount": 5
+    },
+    {
+      "id": 20,
+      "date": "",
+      "description": "",
+      "category": "",
+      "amount": null
     }
   ]
 }
