@@ -28,4 +28,4 @@ const TransactionsList = (props) => {
   )
 }
 
-export default TransactionsList;
+export default TransactionsList

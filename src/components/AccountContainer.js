@@ -30,14 +30,16 @@ class AccountContainer extends Component {
       const {dataInfo, searchForm} = this.state
       this.setsearchForm(event)
 
-      const searchResults = dataInfo.filter(transaction => transaction.category.toLowerCase().includes(searchForm)) || transaction.description.toLowerCase().includes(searchForm)
+      const searchResults = dataInfo.filter(transaction => transaction.category.toLowerCase().includes(searchForm) || transaction.description.toLowerCase().includes(searchForm))
       this.setState({transactions: searchResults})
     }
   
     setsearchForm = (event) => {
       this.setState({searchForm: event.target.value.toLowerCase()})
     }
-  
+
+    
+
       render() {
     return (
       <div>
@@ -48,6 +50,7 @@ class AccountContainer extends Component {
       </div>
     )
   }
-}
+} 
+
 
 export default AccountContainer;
