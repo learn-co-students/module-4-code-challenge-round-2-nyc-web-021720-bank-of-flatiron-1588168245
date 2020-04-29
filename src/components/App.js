@@ -14,6 +14,19 @@ class App extends Component {
   .then(transactions => this.setState({transactions}))
   }
 
+  handlePost() {
+  fetch('http://localhost:6001/transactions', {
+    method: 'POST',
+    headers: {
+      'Content-Type' : 'application/json',
+      Accept: 'application.json'
+    },
+    body: JSON.stringify({})
+  })
+  .then(res => res.json())
+  .then
+  }
+
   render() {
     
     return (
