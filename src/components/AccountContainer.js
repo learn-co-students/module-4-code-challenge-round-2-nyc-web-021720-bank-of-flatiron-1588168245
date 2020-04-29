@@ -57,16 +57,26 @@ class AccountContainer extends Component {
       },
       body: JSON.stringify(newTransaction)
     })
+    this.setState({
+      transactions: [...this.state.transactions, newTransaction],
+      date: '',
+      description: '',
+      category: '',
+      amount: ''
+    })
   }
   
 
   render() {
     let transactions = this.state.transactions
-    console.log(this.state.amount)
+    let date = this.state.date
+    let description = this.state.description
+    let category = this.state.category
+    let amount = this.state.amount
     return (
       <div>
         <Search />
-        <AddTransactionForm handleSubmit={this.handleSubmit} handleAmount={this.handleAmount} handleCategory={this.handleCategory} handleDescription={this.handleDescription} handleDate={this.handleDate} />
+        <AddTransactionForm amount={amount} category={category} description={description} date={date} handleSubmit={this.handleSubmit} handleAmount={this.handleAmount} handleCategory={this.handleCategory} handleDescription={this.handleDescription} handleDate={this.handleDate} />
         <TransactionsList transactions={transactions}/>
       </div>
     );

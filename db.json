@@ -90,6 +90,27 @@
       "description": "testdescripton",
       "category": "asdf",
       "amount": 4
+    },
+    {
+      "id": 14,
+      "date": "2020-04-30",
+      "description": "asdfasdf",
+      "category": "testcategory",
+      "amount": 5
+    },
+    {
+      "id": 15,
+      "date": "2020-04-30",
+      "description": "asdf",
+      "category": "asdf",
+      "amount": 4
+    },
+    {
+      "id": 16,
+      "date": "2020-04-30",
+      "description": "asdf",
+      "category": "asdf",
+      "amount": 1
     }
   ]
 }
