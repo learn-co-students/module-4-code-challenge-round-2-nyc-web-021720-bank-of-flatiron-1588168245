@@ -54,7 +54,7 @@ class AccountContainer extends Component {
   }
 
   render() {
-    console.log(this.state.searchTransaction)
+    // console.log(this.state.searchTransaction)
     return (
       <div>
         <Search 
