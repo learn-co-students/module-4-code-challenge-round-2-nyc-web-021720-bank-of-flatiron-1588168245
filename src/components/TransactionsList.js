@@ -9,20 +9,20 @@ class TransactionsList extends React.Component {
         <tbody>
           <tr>
             <th>
-              <h3 className="ui center aligned header">Date</h3>
+              <h3 onClick={(e) => this.props.handleClick(e)} className="ui center aligned header">Date</h3>
             </th>
             <th>
-              <h3 className="ui center aligned header">Description</h3>
+              <h3 onClick={(e) => this.props.handleClick(e)} className="ui center aligned header">Description</h3>
             </th>
             <th>
-              <h3 className="ui center aligned header">Category</h3>
+              <h3 onClick={(e) => this.props.handleClick(e)} className="ui center aligned header">Category</h3>
             </th>
             <th>
-              <h3 className="ui center aligned header">Amount</h3>
+              <h3 onClick={(e) => this.props.handleClick(e)} className="ui center aligned header">Amount</h3>
             </th>
           </tr>
           {this.props.transactions.map(trans => {
-            return <Transaction data={trans} />
+            return <Transaction delete={this.props.delete} data={trans} />
           })}
         </tbody>
       </table>

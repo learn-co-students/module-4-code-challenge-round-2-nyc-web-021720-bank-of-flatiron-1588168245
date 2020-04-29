@@ -9,7 +9,8 @@ class App extends Component {
     date: null,
     description: null,
     category: null,
-    amount: 0
+    amount: 0,
+    sort: null
   }
 
   //gets the transactions
@@ -42,6 +43,29 @@ class App extends Component {
       .then(data => this.setState({ transactions: [...this.state.transactions, data] }))
   }
 
+  handleClick = e => {
+    console.log(e.target.innerText)
+  }
+
+  deleteClick = e => {
+    let trans = e.target.parentNode
+    let childeren = e.target.parentNode.childNodes
+    console.log(e.target.parentNode.id)
+    // fetch(`http://localhost:6001/transactions/${}`, {
+    //   method: "POST",
+    //   headers: { "content-type": "application/json", "accept": "application/json" },
+    //   body: JSON.stringify({
+    //     "date": this.state.date[0],
+    //     "description": this.state.description[0],
+    //     "category": this.state.category[0],
+    //     "amount": this.state.amount[0]
+    //   })
+    // })
+    //   .then(resp => resp.json())
+    //   .then(data => this.setState({ transactions: [...this.state.transactions, data] }))
+
+  }
+
   render() {
 
     return (
@@ -49,7 +73,7 @@ class App extends Component {
         <div className="ui segment violet inverted">
           <h2>The Royal Bank of Flatiron</h2>
         </div>
-        <AccountContainer handleSubmit={this.handleSubmit} handleChange={this.handleChange} transactions={this.state.transactions} />
+        <AccountContainer delete={this.deleteClick} handleClick={this.handleClick} handleSubmit={this.handleSubmit} handleChange={this.handleChange} transactions={this.state.transactions} />
       </div>
     );
   }
